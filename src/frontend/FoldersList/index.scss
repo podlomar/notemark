@@ -1,0 +1,41 @@
+$color-caramel: #c9a66b;
+
+.icon-folder {
+  flex: 0 0 2rem;
+  background-image: url('img/folder-icon.png');
+  background-size: cover;
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon-note {
+  flex: 0 0 2rem;
+  background-image: url('img/note-icon.png');
+  background-size: cover;
+  width: 2rem;
+  height: 2rem;
+}
+
+.link-label {
+  margin-left: 0.5rem;
+}
+
+.folders-list {
+  background-color: white;
+  width: 300px;
+  max-width: 100%;
+  min-height: 100vh;
+  
+  &__folder, &__note {
+    display: flex;
+    padding: 0rem 1rem;
+    align-items: center;
+    height: 3rem;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      background-color: $color-caramel;
+    }
+  }
+}
