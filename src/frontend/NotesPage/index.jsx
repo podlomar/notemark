@@ -34,6 +34,7 @@ export default class NotesPage extends React.Component {
 
   render() {
     const { path } = this.props;
+    console.log(path);
     const { folders, notes, note } = this.state;
     return (
       <div className="notes-page">
@@ -41,8 +42,9 @@ export default class NotesPage extends React.Component {
           path={path} 
           folders={folders}
           notes={notes}
+          activeLink={note}
         />
-        { note ? <Note path={note} /> : null }
+        { note ? <Note path={path} note={note} /> : null }
       </div>
     );
   }

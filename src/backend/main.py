@@ -45,7 +45,7 @@ class Folder(Resource):
     elif os.path.isfile(f'{syspath}.md'):
       parent = os.path.dirname(syspath)
       folders, notes = folderContent(parent)
-      note = path
+      note = os.path.basename(path)
 
     return {'folders': folders, 'notes': notes, 'note': note}
 

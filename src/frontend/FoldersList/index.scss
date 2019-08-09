@@ -38,4 +38,8 @@ $color-caramel: #c9a66b;
       background-color: $color-caramel;
     }
   }
+
+  &__note--active {
+    background-color: $color-caramel;
+  }
 }
