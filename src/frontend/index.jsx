@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
-import NotesPage from './NotesPage';
+import Main from './Main';
 import './index.scss';
 
 const stripLeadingSlash = path => path === '/' ? '' : path;
@@ -13,7 +13,7 @@ const App = () => {
         path="/:path?"
         render={({location: { pathname } }) => {
           return (
-            <NotesPage path={stripLeadingSlash(pathname)} />
+            <Main path={stripLeadingSlash(pathname)} />
           )
         }}
       />

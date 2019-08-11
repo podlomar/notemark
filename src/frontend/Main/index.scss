@@ -1,0 +1,37 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 0;
+  grid-template-rows: 2rem 1fr;
+  min-height: 100vh;
+
+  @media only screen and (min-width: 768px) {
+    grid-template-columns: 17rem 1fr;
+  }
+
+  grid-template-areas: 
+    "header header" 
+    "navigator notepage";
+
+  &--hide-navigator {
+    grid-template-columns: 0 1fr;
+    
+    @media only screen and (min-width: 768px) {
+      grid-template-columns: 17rem 1fr;
+    }
+  }
+
+  &__header {
+    background-color: #e1b80d;
+    grid-area: header;
+  }
+
+  &__navigator {
+    background-color: white;
+    grid-area: navigator;
+  }
+
+  &__notepage {
+    background-color: #eae2d6;
+    grid-area: notepage;
+  }
+}

@@ -1,5 +1,17 @@
 .note {
   max-width: 46rem;
-  padding: 1rem 3rem;
+  padding: 0.5rem 1rem;
   line-height: 150%;
+
+  @media only screen and (min-width: 768px) {
+    padding: 1rem 2rem;
+  }
+
+  @media only screen and (min-width: 992px) {
+    padding: 1rem 3rem;
+  }
+
+  h1 {
+    line-height: 110%;
+  }
 }

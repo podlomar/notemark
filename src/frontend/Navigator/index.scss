@@ -1,5 +1,3 @@
-$color-caramel: #c9a66b;
-
 .icon-folder {
   flex: 0 0 2rem;
   background-image: url('img/folder-icon.png');
@@ -20,11 +18,9 @@ $color-caramel: #c9a66b;
   margin-left: 0.5rem;
 }
 
-.folders-list {
-  background-color: white;
-  width: 300px;
+.navigator {
+  width: 100%;
   max-width: 100%;
-  min-height: 100vh;
   
   &__folder, &__note {
     display: flex;
@@ -35,11 +31,11 @@ $color-caramel: #c9a66b;
     color: black;
 
     &:hover {
-      background-color: $color-caramel;
+      background-color: #eae2d6;
     }
   }
 
   &__note--active {
-    background-color: $color-caramel;
+    background-color: #eae2d6;
   }
 }
