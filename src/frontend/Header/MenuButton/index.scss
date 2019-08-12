@@ -1,7 +1,11 @@
 .menu-button {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.menu-icon {
   width: 2rem;
   height: 2rem;
   background-image: url('img/menu-icon.png');
   background-size: contain;
-  cursor: pointer;
 }

@@ -6,7 +6,9 @@ const MenuButton = ({onToggle}) => {
     <div 
       className="menu-button"
       onClick={onToggle}
-    />
+    >
+      <div className="menu-icon" />
+    </div>
   );
 };
 
