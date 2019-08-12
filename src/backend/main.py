@@ -42,12 +42,19 @@ class Folder(Resource):
     note = None
     if os.path.isdir(syspath):  
       folders, notes = folderContent(syspath)
+      folderPath = path
     elif os.path.isfile(f'{syspath}.md'):
       parent = os.path.dirname(syspath)
       folders, notes = folderContent(parent)
       note = os.path.basename(path)
+      folderPath = os.path.dirname(path)
 
-    return {'folders': folders, 'notes': notes, 'note': note}
+    return {
+      'folderPath': folderPath,
+      'folders': folders, 
+      'notes': notes, 
+      'note': note
+    }
 
 class Note(Resource):
   def get(self, path = ''):

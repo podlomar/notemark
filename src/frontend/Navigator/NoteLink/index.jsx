@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NoteLink = ({ path, note, active }) => {
+const NoteLink = ({ folderPath, note, active }) => {
   if(active) {
     return (
       <div className="navigator__note navigator__note--active">
@@ -14,7 +14,8 @@ const NoteLink = ({ path, note, active }) => {
   return (
     <Link
       className="navigator__note"
-      to={`${path}/${note.link}`}
+      to={`/${folderPath}/${note.link}`}
+      replace
       key={note.link}
     >
       <div className="icon-note" />

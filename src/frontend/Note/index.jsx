@@ -14,13 +14,19 @@ export default class Note extends React.Component {
     this.fetchNote();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.noteLink !== prevProps.noteLink) {
+      this.fetchNote();
+    }
+  }
+
   async fetchNote() {
-    const { path } = this.props;
-    if (!path) {
+    const { folderPath, noteLink } = this.props;
+    if (!folderPath) {
       return;
     }
     
-    const response = await fetch(`${window.origin}/api/note/${path}`);
+    const response = await fetch(`${window.origin}/api/note/${folderPath}/${noteLink}`);
     const text = await response.text();
     this.setState({noteContent: md.render(text)});
   }

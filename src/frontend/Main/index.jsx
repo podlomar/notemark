@@ -10,6 +10,7 @@ export default class Main extends React.Component {
     super(props);
 
     this.state = {
+      folderPath: null,
       folders: [],
       notes: [],
       note: null,
@@ -20,8 +21,10 @@ export default class Main extends React.Component {
   async fetchFolders() {
     const { path } = this.props;
     const response = await fetch(`${window.origin}/api/tree${path}`);
-    const { folders, notes, note } = await response.json();
-    this.setState({ folders, notes, note });
+    const { 
+      folderPath, folders, notes, note 
+    } = await response.json();
+    this.setState({ folderPath, folders, notes, note });
   }
 
   componentDidMount() {
@@ -41,10 +44,8 @@ export default class Main extends React.Component {
   }
 
   render() {
-    const { path } = this.props;
-    console.log(path);
     const { 
-      folders, notes, note, keepNavigatorOnMobile
+      folderPath, folders, notes, note, keepNavigatorOnMobile
     } = this.state;
     
     const noteActive = note && !keepNavigatorOnMobile ? ' main--hide-navigator' : '';
@@ -57,14 +58,14 @@ export default class Main extends React.Component {
         </div>
         <div className="main__navigator">
           <Navigator 
-            path={path} 
+            folderPath={folderPath} 
             folders={folders}
             notes={notes}
             activeLink={note}
           />
         </div>
         <div className="main__notepage">
-          { note ? <Note path={path} note={note} /> : null }
+          { note ? <Note folderPath={folderPath} noteLink={note} /> : null }
         </div>
       </div>
     );

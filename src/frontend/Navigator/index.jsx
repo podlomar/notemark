@@ -5,12 +5,12 @@ import './index.scss';
 
 export default class Navigator extends React.Component {
   render() {
-    const { path, folders, notes, activeLink } = this.props;
+    const { folderPath, folders, notes, activeLink } = this.props;
     return (
       <div className="navigator">
         {folders.map(folder => (
           <Link
-            to={`${path}/${folder.link}`}
+            to={`${folderPath}/${folder.link}`}
             className="navigator__folder"
             key={folder.link}
           >
@@ -21,7 +21,7 @@ export default class Navigator extends React.Component {
         { notes.map(note => (
           <NoteLink 
             key={note.link} 
-            path={path} 
+            folderPath={folderPath} 
             note={note}
             active={activeLink === note.link}
           />
