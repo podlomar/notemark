@@ -1,42 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import MarkdownIt from 'markdown-it';
 import './index.scss';
 
 const md = new MarkdownIt();
 
-export default class Note extends React.Component {
-  
-  state = {
-    noteContent: ''
-  }
+const Note = ({ folderPath, noteLink }) => {
+  const [noteContent, setNoteContent] = useState('');
 
-  componentDidMount() {
-    this.fetchNote();
-  }
+  useEffect(() => {
+    const fetchNote = async () => {
+      if (!folderPath) {
+        return;
+      }
+      
+      const response = await fetch(
+        `${window.origin}/api/note/${folderPath}/${noteLink}`
+      );
+      const text = await response.text();
+      setNoteContent(md.render(text));
+    };
 
-  componentDidUpdate(prevProps) {
-    if (this.props.noteLink !== prevProps.noteLink) {
-      this.fetchNote();
-    }
-  }
+    fetchNote();
+  }, [folderPath, noteLink]);
 
-  async fetchNote() {
-    const { folderPath, noteLink } = this.props;
-    if (!folderPath) {
-      return;
-    }
-    
-    const response = await fetch(`${window.origin}/api/note/${folderPath}/${noteLink}`);
-    const text = await response.text();
-    this.setState({noteContent: md.render(text)});
-  }
-
-  render() {
-    const { noteContent } = this.state;
-    return (
-      <div className="note"
-        dangerouslySetInnerHTML={{ __html: noteContent }}
-      />
-    );
-  }
+  return (
+    <div className="note"
+      dangerouslySetInnerHTML={{ __html: noteContent }}
+    />
+  );
 }
+
+export default Note;

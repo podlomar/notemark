@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import NoteLink from './NoteLink';
 import './index.scss';
 
-
-
 const Navigator = (
   { folderPath, folders, notes, activeLink }
 ) => (
-  console.log(folderPath) || console.log(folders) ||
   <div className="navigator">
     {folders.map(folder => (
       <Link
