@@ -42,12 +42,15 @@ class Folder(Resource):
     note = None
     if os.path.isdir(syspath):  
       folders, notes = folderContent(syspath)
-      folderPath = path
+      folderPath = f'/{path}/'
     elif os.path.isfile(f'{syspath}.md'):
       parent = os.path.dirname(syspath)
       folders, notes = folderContent(parent)
       note = os.path.basename(path)
-      folderPath = os.path.dirname(path)
+      folderPath = f'/{os.path.dirname(path)}/'
+    
+    if folderPath == '//':
+      folderPath = '/'
 
     return {
       'folderPath': folderPath,
@@ -58,10 +61,7 @@ class Folder(Resource):
 
 class Note(Resource):
   def get(self, path = ''):
-    if path != '':
-      path = '/' + path
-    
-    with open(f'../notes{path}.md') as file:
+    with open(f'../notes/{path}.md') as file:
       content = file.read()
 
     response = make_response(content)
@@ -69,12 +69,11 @@ class Note(Resource):
     return response
 
 api.add_resource(Folder, 
-  '/api/tree', 
+  '/api/tree/', 
   '/api/tree/<path:path>/'
 )
 
-api.add_resource(Note, 
-  '/api/note', 
+api.add_resource(Note,
   '/api/note/<path:path>/'
 )
 

@@ -10,7 +10,7 @@ const NoteLink = ({ folderPath, note, active }) => (
   ) : (
     <Link
       className="navigator__note"
-      to={`/${folderPath}/${note.link}`}
+      to={`${folderPath}${note.link}`}
       replace
       key={note.link}
     >
