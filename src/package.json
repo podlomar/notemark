@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "entities": "^1.1.2",
-    "markdown-it": "^9.0.1",
+    "markdown-it": "^12.3.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
